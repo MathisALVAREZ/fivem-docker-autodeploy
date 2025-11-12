@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Déclaration Fiscale — Evogen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="overlay" class="overlay" style="display:none;">
+  <div class="panel">
+
+    <!-- header -->
+    <div class="panel-header">
+      <div class="left">
+        <div class="logo"></div>
+        <div class="titles">
+          <h1>Déclaration Fiscale</h1>
+          <p>Gouvernement — Evogen RP</p>
+        </div>
+      </div>
+      <div class="right">
+        <button id="close" class="icon-btn" title="Fermer">✕</button>
+      </div>
+    </div>
+
+    <!-- onglets -->
+    <div class="tabs">
+      <button class="tab active" data-tab="declare">Déclarer</button>
+      <button class="tab" data-tab="history">Historique</button>
+      <button class="tab" data-tab="info">Infos</button>
+    </div>
+
+    <div class="panel-body">
+
+      <!-- Déclarer -->
+      <section id="tab-declare" class="tab-content active">
+        <div class="grid">
+          <div class="card">
+            <h3>Entreprise</h3>
+            <div class="kvs">
+              <div class="kv"><span>Society</span><strong id="society">—</strong></div>
+              <div class="kv"><span>Taux</span><strong id="rate">—</strong></div>
+              <div class="kv"><span>Fréquence</span><strong>Hebdomadaire</strong></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Déclaration</h3>
+            <label for="amount">Montant à déclarer</label>
+            <input id="amount" type="number" min="1" placeholder="15000">
+            <label for="accountingLink" class="label">Lien vers le document de comptabilité (facultatif)</label>
+            <input id="accountingLink" type="text" placeholder="https://exemple.com/ma-fiche-comptable.pdf">
+
+            <div class="badges">
+              <div class="badge"><span>Impôt estimé</span><strong id="tax">0</strong></div>
+              <div class="badge"><span>Dette potentielle (si insuff.)</span><strong id="debt">0</strong></div>
+            </div>
+
+            <div id="weeklyBlock" class="warn" style="display:none;">
+              Une déclaration a déjà été faite cette semaine.
+            </div>
+
+            <div class="actions">
+              <button id="declare" class="primary">Déclarer</button>
+              <button id="clear" class="ghost">Effacer</button>
+            </div>
+
+            <div id="debtActions" class="actions" style="display:none; margin-top:5px;">
+              <button id="payDebt" class="primary">💰 Payer la dette</button>
+            </div>
+
+            <div id="info" class="info"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Historique -->
+      <section id="tab-history" class="tab-content">
+        <div class="card">
+          <div class="history-header">
+            <h3>Dernières déclarations</h3>
+            <input type="text" id="searchInput" placeholder="Rechercher une date...">
+          </div>
+
+          <div class="table">
+            <div class="thead">
+              <div>Date</div>
+              <div>Déclaré</div>
+              <div>Impôt</div>
+              <div>Dette</div>
+              <div>Statut</div>
+            </div>
+            <div id="tbody" class="tbody"></div>
+          </div>
+
+          <div class="pager">
+            <button id="prevPage">◀</button>
+            <span id="pageInfo">1 / 1</span>
+            <button id="nextPage">▶</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Infos -->
+      <section id="tab-info" class="tab-content">
+        <div class="card">
+          <h3>Informations fiscales</h3>
+          <p>
+            Les patrons doivent effectuer une déclaration hebdomadaire des revenus de leur entreprise.
+            L’impôt est calculé selon le taux en vigueur. En cas de fonds insuffisants, une dette est appliquée
+            avec une majoration. Les rappels et pénalités sont automatiques.
+          </p>
+          <p>
+            Une fiche comptable peut être transmise pour chaque déclaration afin de justifier les revenus et dépenses.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="app.js"></script>
+</body>
+</html>

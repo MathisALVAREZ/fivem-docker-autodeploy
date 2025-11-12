@@ -1,0 +1,475 @@
+/* =========================================================
+   🎨 Thème principal — Evogen RP (Interface fiscale)
+   ========================================================= */
+
+:root {
+  /* ---- Couleurs ---- */
+  --bg: #0f1120;
+  --panel: #151725;
+  --panel2: #1a1d2e;
+  --stroke: #2a2f4a;
+  --text: #e6e8ff;
+  --muted: #a6a9c9;
+  --primary: #6c63ff;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --amber: #ffb020;
+
+  /* ---- UI ---- */
+  --r: 16px;
+  --shadow: 0 14px 42px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   🧱 Structure de base
+   ========================================================= */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: Inter, system-ui, Segoe UI, Arial, sans-serif;
+  background: transparent;
+  color: var(--text);
+}
+
+/* =========================================================
+   🪟 Overlay / Panneau principal
+   ========================================================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #0f1120bf, #0f1120f2);
+}
+
+.panel {
+  width: min(1100px, 95vw);
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(38,42,66,.85), rgba(21,23,37,.95));
+}
+
+/* =========================================================
+   🧭 En-tête du panneau
+   ========================================================= */
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--stroke);
+  background: linear-gradient(180deg, #1a1d2e, #16182a);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: radial-gradient(circle at 30% 30%, #7f8cff 0 40%, #6c63ff 40% 70%, #3a3a75 70% 100%);
+  box-shadow: 0 6px 22px #6c63ff55;
+}
+
+.titles h1 { margin: 0; font-size: 18px; }
+.titles p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+
+.icon-btn {
+  background: #232744;
+  border: 1px solid var(--stroke);
+  color: #cfd2ff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.icon-btn:hover { filter: brightness(1.1); }
+
+/* =========================================================
+   📑 Onglets
+   ========================================================= */
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--stroke);
+  background: linear-gradient(180deg, #191b2d, #17192b);
+}
+
+.tab {
+  background: #222540;
+  border: 1px solid var(--stroke);
+  color: #cfd2ff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.tab.active {
+  background: #2a2e4f;
+  border-color: #40457a;
+  color: #fff;
+}
+
+/* =========================================================
+   🧾 Corps du panneau
+   ========================================================= */
+
+.panel-body { padding: 16px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* =========================================================
+   📦 Cartes et infos
+   ========================================================= */
+
+.card {
+  background: linear-gradient(180deg, #1a1d2e, #141629);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.card h3 { margin: 0 0 10px; }
+
+/* Key-Values */
+.kvs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kv {
+  background: #171a2b;
+  border: 1px solid #2a2f4a;
+  border-radius: 10px;
+  padding: 10px;
+}
+.kv span { color: var(--muted); font-size: 12px; }
+.kv strong { display: block; margin-top: 6px; font-size: 14px; }
+
+/* Inputs */
+label { display: block; margin: 6px 0 6px 2px; color: var(--muted); font-size: 13px; }
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #2a2f4a;
+  background: #111425;
+  color: #fff;
+}
+input::placeholder { color: #555b7a; }
+
+/* Badges */
+.badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.badge {
+  background: #171a2b;
+  border: 1px solid #2a2f4a;
+  border-radius: 10px;
+  padding: 10px;
+}
+.badge span { color: var(--muted); font-size: 12px; }
+.badge strong { display: block; margin-top: 6px; font-size: 14px; }
+
+/* Messages */
+.warn {
+  margin-top: 10px;
+  background: #2b1d10;
+  border: 1px solid #5a3a1e;
+  color: #ffc47a;
+  padding: 10px;
+  border-radius: 8px;
+}
+.info {
+  margin-top: 8px;
+  color: #cfd2ff;
+  opacity: .8;
+  font-size: 13px;
+}
+
+/* =========================================================
+   🧩 Boutons
+   ========================================================= */
+
+.actions { margin-top: 12px; display: flex; gap: 10px; }
+.primary, .ghost {
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.primary {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+}
+.primary:hover { filter: brightness(1.1); }
+
+.ghost {
+  background: transparent;
+  border: 1px solid var(--stroke);
+  color: #cfd2ff;
+}
+.ghost:hover { filter: brightness(1.1); }
+
+#payDebt {
+  background: var(--success);
+}
+#payDebt:hover { filter: brightness(1.1); }
+
+/* =========================================================
+   📋 Tableaux
+   ========================================================= */
+
+.table {
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.thead, .tbody > div {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr .8fr .6fr;
+}
+.thead {
+  background: #1a1d2e;
+  color: var(--muted);
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.tbody > div {
+  padding: 10px;
+  background: #121429;
+  border-top: 1px solid #232744;
+}
+
+/* Statuts */
+.stat-ok { color: #ffc46b !important; font-weight: 600; } /* orange Evogen */
+.stat-nok { color: var(--danger); }
+
+/* Boutons internes */
+.pay-btn {
+  margin-left: 12px;
+  background: linear-gradient(145deg, #1f243d, #232a45);
+  border: 1px solid #3b4264;
+  color: #ffc46b;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px #00000040;
+}
+.pay-btn:hover {
+  background: #2e3553;
+  border-color: #585f8a;
+  color: #ffd890;
+  box-shadow: 0 0 10px #ffc46b40;
+}
+
+/* =========================================================
+   🔍 Recherche + Pagination
+   ========================================================= */
+
+.searchbar { margin-bottom: 10px; }
+.searchbar input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #2a2f4a;
+  background: #111425;
+  color: #fff;
+}
+.pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.pager button {
+  background: #232744;
+  border: 1px solid #2a2f4a;
+  color: #cfd2ff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pager span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   ⚠️ Alertes
+   ========================================================= */
+
+.alertBox {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 0 0 10px #ff5252;
+  animation: fadein 0.3s ease;
+  z-index: 9999;
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* =========================================================
+   🧾 Onglets dynamiques
+   ========================================================= */
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* =========================================================
+   📘 Popup "Fiche comptable"
+   ========================================================= */
+
+.doc-btn {
+  margin-left: 8px;
+  background: #232a46;
+  border: 1px solid #3b4264;
+  color: #8caaff;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 4px 9px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.doc-btn:hover {
+  background: #2d3459;
+  color: #ffffff;
+  border-color: #5b63a8;
+}
+
+/* =========================================================
+   📘 Popup — Fiche comptable
+   ========================================================= */
+#accountingPopup {
+  position: fixed;
+  bottom: 40px;                 /* 👉 au bas de l’écran */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f1120f2;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  width: 420px;
+  padding: 20px;
+  color: var(--text);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadein 0.3s ease;
+}
+
+#accountingPopup h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--primary);
+  text-align: center;
+}
+
+#accountingPopup p {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+#accountingPopup input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #2a2f4a;
+  background: #111425;
+  color: #fff;
+  text-align: center;
+}
+
+#accountingPopup .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#accountingPopup button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#accountingPopup button:hover {
+  filter: brightness(1.1);
+}
+
+#cancelAccountingBtn {
+  background: #232744;
+  border: 1px solid var(--stroke);
+}
+
+/* --- Bouton Evogen pour l’envoi de fiche --- */
+.send-fiche-btn {
+  background: linear-gradient(145deg, #262b48, #2f3560);
+  border: 1px solid #41497a;
+  color: #9bc2ff;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 6px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 8px #00000060;
+}
+
+.send-fiche-btn:hover {
+  background: #38407a;
+  border-color: #5a6eff;
+  color: #ffffff;
+  box-shadow: 0 0 10px #6c63ff50;
+}
+
+/* --- Notification stylée Evogen --- */
+.evogen-notif {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1a1e33, #242b4d);
+  border: 1px solid #3b3f66;
+  color: #cfd2ff;
+  font-weight: 500;
+  padding: 14px 22px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
+  animation: notif-in 0.4s ease;
+  z-index: 9999;
+}
+
+@keyframes notif-in {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
